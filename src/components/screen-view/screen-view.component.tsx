@@ -1,5 +1,5 @@
+import { useThemeColor } from "@hooks";
 import { View as DefaultView } from "react-native";
-import { useThemeColor } from "../../hooks/use-theme-color";
 import { ScreenViewProps } from "./screen-view.types";
 
 export const ScreenView = ({

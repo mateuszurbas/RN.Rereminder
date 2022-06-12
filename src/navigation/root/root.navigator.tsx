@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ModalScreen from "../../screens/modal/modal.screen";
-import { BottomTabNavigator } from "../root-tab/root-tab.navigator";
+import { ModalScreen } from "@screens/modal";
+import { BottomTabNavigator } from "../root-tab";
 import { RootStackParamList } from "./root.types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

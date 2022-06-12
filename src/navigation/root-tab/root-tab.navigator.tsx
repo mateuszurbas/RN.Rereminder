@@ -1,10 +1,10 @@
+import { CommonIcon } from "@components/common-icon";
+import { Colors } from "@constants";
+import { useColorScheme } from "@hooks";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { DashboardScreen } from "@screens/dashboard";
+import { OptionsScreen } from "@screens/options";
 import React from "react";
-import { CommonIcon } from "../../components/common-icon/common-icon.component";
-import { Colors } from "../../constants/colors";
-import useColorScheme from "../../hooks/use-color-scheme";
-import { DashboardScreen } from "../../screens/dashboard/dashboard.screen";
-import { OptionsScreen } from "../../screens/options/options.screen";
 import { RootTabParamList, RootTabScreenProps } from "./root-tab.types";
 
 /**
@@ -32,7 +32,6 @@ export const BottomTabNavigator = () => {
           tabBarIcon: ({ color }) => <CommonIcon name="code" color={color} />,
         })}
       />
-
       <RootTab.Screen
         name="Options"
         component={OptionsScreen}

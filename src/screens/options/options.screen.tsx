@@ -1,7 +1,7 @@
+import { ScreenView } from "@components/screen-view";
+import { RootTabScreenProps } from "@navigation";
+import React from "react";
 import { Button, StyleSheet } from "react-native";
-import { ScreenView } from "../../components/screen-view/screen-view.component";
-
-import { RootTabScreenProps } from "../../navigation/root-tab/root-tab.types";
 
 export const OptionsScreen = ({
   navigation,
