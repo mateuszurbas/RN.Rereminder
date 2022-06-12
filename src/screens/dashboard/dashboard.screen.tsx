@@ -1,21 +1,13 @@
 import React from "react";
-import { Button, StyleSheet } from "react-native";
-import { ScreenView } from "@components/screen-view";
+import { Button } from "react-native";
 import { RootTabScreenProps } from "@navigation";
+import { Container } from "./dashboard.styles";
 
 export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) => {
   return (
-    <ScreenView style={styles.container}>
+    <Container>
       <Button title="Modal" onPress={() => navigation.navigate("Modal")} />
       <Button title="Tab 2" onPress={() => navigation.navigate("Options")} />
-    </ScreenView>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
