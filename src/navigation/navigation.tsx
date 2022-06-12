@@ -1,9 +1,9 @@
+import React from "react";
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
 } from "@react-navigation/native";
-import React from "react";
 import { navigationLinking } from "./navigation.linking";
 import { NavigationProps } from "./navigation.types";
 import { RootNavigator } from "./root/root.navigator";

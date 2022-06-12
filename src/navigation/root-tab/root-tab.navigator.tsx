@@ -1,11 +1,11 @@
-import { CommonIcon } from "@components/common-icon";
+import React from "react";
 import { Colors } from "@constants";
-import { useColorScheme } from "@hooks";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { CommonIcon } from "@components/common-icon";
+import { useColorScheme } from "@hooks";
 import { DashboardScreen } from "@screens/dashboard";
 import { OptionsScreen } from "@screens/options";
-import React from "react";
-import { RootTabParamList, RootTabScreenProps } from "./root-tab.types";
+import { RootTabParamList } from "./root-tab.types";
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
@@ -27,7 +27,8 @@ export const BottomTabNavigator = () => {
       <RootTab.Screen
         name="Dasboard"
         component={DashboardScreen}
-        options={({ navigation }: RootTabScreenProps<"Dasboard">) => ({
+        options={() => ({
+          // options={({ navigation }: RootTabScreenProps<"Dasboard">) => ({
           title: "Dashboard",
           tabBarIcon: ({ color }) => <CommonIcon name="code" color={color} />,
         })}

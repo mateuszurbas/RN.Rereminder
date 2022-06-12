@@ -8,5 +8,5 @@ export const useThemeColor = (
   const theme = useColorScheme();
   const colorFromProps = props[theme];
 
-  return colorFromProps ? colorFromProps : Colors[theme][colorName];
+  return colorFromProps || Colors[theme][colorName];
 };

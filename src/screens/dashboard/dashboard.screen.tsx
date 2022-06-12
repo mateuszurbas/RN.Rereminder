@@ -1,11 +1,9 @@
-import { ScreenView } from "@components/screen-view";
-import { RootTabScreenProps } from "@navigation";
 import React from "react";
 import { Button, StyleSheet } from "react-native";
+import { ScreenView } from "@components/screen-view";
+import { RootTabScreenProps } from "@navigation";
 
-export const DashboardScreen = ({
-  navigation,
-}: RootTabScreenProps<"Dasboard">) => {
+export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) => {
   return (
     <ScreenView style={styles.container}>
       <Button title="Modal" onPress={() => navigation.navigate("Modal")} />
