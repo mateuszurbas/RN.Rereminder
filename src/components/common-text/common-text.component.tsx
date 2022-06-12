@@ -1,14 +1,19 @@
-import { useThemeColor } from "../../hooks/use-theme-color";
-import { Text as DefaultText } from "react-native";
-import { CommonTextProps, TextProps } from "./common-text.types";
+import { useThemeColor } from "@hooks";
+import { Text } from "react-native";
+import { CommonTextProps } from "./common-text.types";
 
-const Text = ({ style, lightColor, darkColor, ...otherProps }: TextProps) => {
+export const CommonText = ({
+  lightColor,
+  darkColor,
+  style,
+  ...otherProps
+}: CommonTextProps) => {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
-};
 
-export const CommonText = (props: CommonTextProps) => {
   return (
-    <Text {...props} style={[props.style, { fontFamily: "space-mono" }]} />
+    <Text
+      {...otherProps}
+      style={[{ color }, style, { fontFamily: "space-mono" }]}
+    />
   );
 };
