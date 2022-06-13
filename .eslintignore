@@ -1,0 +1,3 @@
+# .eslintignore
+
+tools/templates/*

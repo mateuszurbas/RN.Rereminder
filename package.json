@@ -9,11 +9,12 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
-    "compile": "bash -c tsc --noEmit -p . --pretty",
+    "compile": " yarn lint; bash -c tsc --noEmit -p . --pretty",
     "lint": "eslint App.tsx src --fix --ext .js,.ts,.tsx",
     "format": "prettier --write",
     "prepare": "husky install",
-    "check-all": "lint-staged"
+    "check-all": "lint-staged",
+    "generate": "node ./tools/generate.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -32,6 +33,7 @@
     "expo-status-bar": "~1.3.0",
     "expo-system-ui": "~1.2.0",
     "expo-web-browser": "~10.2.0",
+    "generate-template-files": "^3.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
@@ -74,7 +76,6 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "yarn lint",
       "yarn compile",
       "yarn format"
     ]
