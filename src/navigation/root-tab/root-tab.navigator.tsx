@@ -25,12 +25,25 @@ export const BottomTabNavigator = () => {
       }}
     >
       <RootTab.Screen
+        name="Note"
+        component={OptionsScreen}
+        options={() => ({
+          // options={({ navigation }: RootTabScreenProps<"Dasboard">) => ({
+          title: "Note",
+          tabBarIcon: ({ color }) => (
+            <CommonIcon name="tag" color={color} size={25} style={{ marginBottom: -3 }} />
+          ),
+        })}
+      />
+      <RootTab.Screen
         name="Dasboard"
         component={DashboardScreen}
         options={() => ({
           // options={({ navigation }: RootTabScreenProps<"Dasboard">) => ({
-          title: "Dashboard",
-          tabBarIcon: ({ color }) => <CommonIcon name="code" color={color} />,
+          title: "",
+          tabBarIcon: ({ color }) => (
+            <CommonIcon name="spinner" color={color} size={35} style={{ marginBottom: -15 }} />
+          ),
         })}
       />
       <RootTab.Screen
@@ -38,7 +51,9 @@ export const BottomTabNavigator = () => {
         component={OptionsScreen}
         options={{
           title: "Options",
-          tabBarIcon: ({ color }) => <CommonIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <CommonIcon name="gear" color={color} size={25} style={{ marginBottom: -3 }} />
+          ),
         }}
       />
     </RootTab.Navigator>
