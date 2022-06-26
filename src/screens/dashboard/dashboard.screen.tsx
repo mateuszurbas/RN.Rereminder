@@ -5,7 +5,7 @@ import { Clock, Point } from "@components/clock";
 import { RootTabScreenProps } from "@navigation";
 import { mockedPoints } from "./dashboard.mock";
 
-const radius = 200;
+const radius = 100;
 
 export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) => {
   const points: Point[] = useMemo(
@@ -13,23 +13,23 @@ export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) 
     [mockedPoints],
   );
 
-  const degree = useSharedValue(0);
-  const initDegree = useSharedValue(0);
+  const shiftDegree = useSharedValue(0);
+  const lastShiftDegree = useSharedValue(0);
 
   const dragGesture = Gesture.Pan()
     .averageTouches(true)
     .onStart(() => {
-      initDegree.value = degree.value;
+      lastShiftDegree.value = shiftDegree.value;
     })
     .onUpdate((e) => {
-      const value = (initDegree.value + e.translationY) % 360;
-      degree.value = value;
+      const value = (lastShiftDegree.value + e.translationY) % 360;
+      shiftDegree.value = value;
     });
 
   return (
     <GestureDetector gesture={dragGesture}>
-      <Animated.View style={{ flex: 1, justifyContent: "center", marginLeft: -radius }}>
-        <Clock animatedValue={degree} points={points} radius={radius} />
+      <Animated.View style={{ flex: 1, justifyContent: "center", marginLeft: radius }}>
+        <Clock shiftDegree={shiftDegree} points={points} radius={radius} />
       </Animated.View>
     </GestureDetector>
   );

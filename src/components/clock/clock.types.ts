@@ -8,6 +8,6 @@ export type Point = {
 
 export type ClockProps = {
   radius: number;
-  animatedValue: SharedValue<number>;
+  shiftDegree: SharedValue<number>;
   points: Point[];
 };

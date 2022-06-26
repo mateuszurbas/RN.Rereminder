@@ -4,7 +4,7 @@ import { ClockPoint } from "@components/clock-point";
 import { Circle } from "./clock.styles";
 import { ClockProps } from "./clock.types";
 
-export const Clock = ({ animatedValue, points, radius }: ClockProps) => {
+export const Clock = ({ shiftDegree, points, radius }: ClockProps) => {
   return (
     <View>
       <Circle radius={radius}>
@@ -14,7 +14,7 @@ export const Clock = ({ animatedValue, points, radius }: ClockProps) => {
             clockRadius={radius}
             degree={degree}
             text={text}
-            animatedValue={animatedValue}
+            shiftDegree={shiftDegree}
             onPress={onPress}
           />
         ))}

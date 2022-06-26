@@ -4,6 +4,6 @@ export type ClockPointProps = {
   degree: number;
   text: string;
   onPress: VoidFunction;
-  animatedValue: SharedValue<number>;
+  shiftDegree: SharedValue<number>;
   clockRadius: number;
 };

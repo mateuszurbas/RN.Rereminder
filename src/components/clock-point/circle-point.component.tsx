@@ -14,38 +14,47 @@ import { ClockPointProps } from "./circle-point.types";
 export const ClockPoint = ({
   degree,
   text,
-  animatedValue,
+  shiftDegree,
   clockRadius,
   onPress,
 }: ClockPointProps) => {
   const circleColor = useThemeColor("tint");
-  const deg = useDerivedValue(() => {
-    const temp = (animatedValue.value + degree) % 360;
+
+  const sumDegree = useDerivedValue(() => {
+    const temp = (shiftDegree.value + degree) % 360;
     return temp > 0 ? temp : 360 + temp;
   });
 
-  const animatedPositionStyles = useAnimatedStyle(() => {
-    const radian = (deg.value * Math.PI) / 180;
+  const containerStyle = useAnimatedStyle(() => {
+    const radian = (sumDegree.value * Math.PI) / 180;
+    const halfPointSize = 15;
+    const r = clockRadius + 30;
+    const translateX = r * Math.cos(radian) + clockRadius - halfPointSize;
+    const translateY = r * Math.sin(radian);
 
-    const translateX = clockRadius * Math.cos(radian) + clockRadius - 15;
-    const translateY = clockRadius * Math.sin(radian);
     return {
       position: "absolute",
       transform: [{ translateX }, { translateY }],
     };
   });
 
-  const animatedSizeStyles = useAnimatedStyle(() => {
-    const scale = interpolate(deg.value, [0, 100, 260, 360], [1, 0.5, 0.5, 1], Extrapolation.CLAMP);
+  const circleStyle = useAnimatedStyle(() => {
+    const scale = interpolate(
+      sumDegree.value,
+      [0, 100, 260, 360],
+      [1, 0.4, 0.4, 1],
+      Extrapolation.CLAMP,
+    );
+
     return {
       transform: [{ scale }],
     };
   });
 
   return (
-    <Container style={animatedPositionStyles}>
+    <Container style={containerStyle}>
       <TouchableOpacity onPress={onPress} style={{ flexDirection: "row", alignItems: "center" }}>
-        <Circle style={[{ backgroundColor: circleColor }, animatedSizeStyles]} />
+        <Circle style={[{ backgroundColor: circleColor }, circleStyle]} />
         <CommonText>{text}</CommonText>
       </TouchableOpacity>
     </Container>
