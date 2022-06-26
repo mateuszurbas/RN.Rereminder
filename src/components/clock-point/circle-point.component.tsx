@@ -1,6 +1,11 @@
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useAnimatedStyle } from "react-native-reanimated";
+import {
+  Extrapolation,
+  interpolate,
+  useAnimatedStyle,
+  useDerivedValue,
+} from "react-native-reanimated";
 import { CommonText } from "@components/common-text";
 import { useThemeColor } from "@hooks";
 import { Circle, Container } from "./circle-point.styles";
@@ -14,13 +19,15 @@ export const ClockPoint = ({
   onPress,
 }: ClockPointProps) => {
   const circleColor = useThemeColor("tint");
+  const deg = useDerivedValue(() => {
+    const temp = (animatedValue.value + degree) % 360;
+    return temp > 0 ? temp : 360 + temp;
+  });
 
-  const animatedStyles = useAnimatedStyle(() => {
-    const allDegree = (animatedValue.value + degree) % 360;
-    const radian = (allDegree * Math.PI) / 180;
+  const animatedPositionStyles = useAnimatedStyle(() => {
+    const radian = (deg.value * Math.PI) / 180;
 
-    // + radius becouse we want to move point to circle area
-    const translateX = clockRadius * Math.cos(radian) + clockRadius;
+    const translateX = clockRadius * Math.cos(radian) + clockRadius - 15;
     const translateY = clockRadius * Math.sin(radian);
     return {
       position: "absolute",
@@ -28,10 +35,17 @@ export const ClockPoint = ({
     };
   });
 
+  const animatedSizeStyles = useAnimatedStyle(() => {
+    const scale = interpolate(deg.value, [0, 100, 260, 360], [1, 0.5, 0.5, 1], Extrapolation.CLAMP);
+    return {
+      transform: [{ scale }],
+    };
+  });
+
   return (
-    <Container style={animatedStyles}>
+    <Container style={animatedPositionStyles}>
       <TouchableOpacity onPress={onPress} style={{ flexDirection: "row", alignItems: "center" }}>
-        <Circle radius={10} style={{ backgroundColor: circleColor }} />
+        <Circle style={[{ backgroundColor: circleColor }, animatedSizeStyles]} />
         <CommonText>{text}</CommonText>
       </TouchableOpacity>
     </Container>

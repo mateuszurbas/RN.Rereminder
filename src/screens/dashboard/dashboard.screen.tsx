@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, { useSharedValue } from "react-native-reanimated";
 import { Clock, Point } from "@components/clock";
@@ -21,7 +20,6 @@ export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) 
     .averageTouches(true)
     .onStart(() => {
       initDegree.value = degree.value;
-      console.log(initDegree.value);
     })
     .onUpdate((e) => {
       const value = (initDegree.value + e.translationY) % 360;
@@ -29,12 +27,10 @@ export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) 
     });
 
   return (
-    <Animated.View>
-      <GestureDetector gesture={dragGesture}>
-        <View style={{ height: "100%", justifyContent: "center", marginLeft: -radius }}>
-          <Clock animatedValue={degree} points={points} radius={radius} />
-        </View>
-      </GestureDetector>
-    </Animated.View>
+    <GestureDetector gesture={dragGesture}>
+      <Animated.View style={{ flex: 1, justifyContent: "center", marginLeft: -radius }}>
+        <Clock animatedValue={degree} points={points} radius={radius} />
+      </Animated.View>
+    </GestureDetector>
   );
 };

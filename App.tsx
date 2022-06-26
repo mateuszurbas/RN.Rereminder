@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useCachedResources, useColorScheme } from "@hooks";
 import { Navigation } from "@navigation";
+import "react-native-gesture-handler";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
