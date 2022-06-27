@@ -8,7 +8,8 @@
       "@constants": ["src/constants"],
       "@hooks": ["src/hooks"],
       "@navigation": ["src/navigation"],
-      "@screens/*": ["src/screens/*"]
+      "@screens/*": ["src/screens/*"],
+      "@core": ["src/core"]
     }
   }
 }
