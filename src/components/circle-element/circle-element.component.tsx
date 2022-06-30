@@ -8,7 +8,7 @@ export const CircleElement = ({
   shiftDegree,
   radius,
   rotation = false,
-  childern,
+  children,
 }: ClockPointProps) => {
   const sumDegree = useDerivedValue(() => {
     const temp = (shiftDegree.value + degree) % 360;
@@ -28,5 +28,5 @@ export const CircleElement = ({
     };
   });
 
-  return <Container style={containerStyle}>{childern}</Container>;
+  return <Container style={containerStyle}>{children}</Container>;
 };
