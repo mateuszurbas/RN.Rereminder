@@ -2,7 +2,9 @@ import { SharedValue } from "react-native-reanimated";
 
 export type Point = {
   degree: number;
-  text: string;
+  title: string;
+  description: string;
+  time: Date;
   onPress: VoidFunction;
 };
 

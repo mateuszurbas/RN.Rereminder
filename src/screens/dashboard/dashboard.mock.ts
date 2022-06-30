@@ -1,27 +1,10 @@
-export const mockedPoints = [
-  {
-    degree: 0,
-    text: "1",
-  },
-  {
-    degree: 50,
-    text: "2",
-  },
+const generatePoint = (degree: number, index: number) => ({
+  degree,
+  title: `Zadanie nr ${index}`,
+  description: `To zadanie jest przy ${degree} stopniach na kole`,
+  time: new Date(),
+});
 
-  {
-    degree: 98,
-    text: "4",
-  },
-  {
-    degree: 140,
-    text: "5",
-  },
-  {
-    degree: 200,
-    text: "8",
-  },
-  {
-    degree: 290,
-    text: "8",
-  },
-];
+export const mockedPoints = [0, 10, 40, 90, 150, 220, 300, 330].map((degree, index) =>
+  generatePoint(degree, index),
+);

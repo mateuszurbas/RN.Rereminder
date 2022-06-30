@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import {
+import Animated, {
   Extrapolation,
   interpolate,
   useAnimatedStyle,
@@ -11,17 +11,11 @@ import { useThemeColor } from "@hooks";
 import { Circle, Container } from "./circle-point.styles";
 import { ClockPointProps } from "./circle-point.types";
 
-export const ClockPoint = ({
-  degree,
-  text,
-  shiftDegree,
-  clockRadius,
-  onPress,
-}: ClockPointProps) => {
+export const ClockPoint = ({ point, shiftDegree, clockRadius }: ClockPointProps) => {
   const circleColor = useThemeColor("tint");
 
   const sumDegree = useDerivedValue(() => {
-    const temp = (shiftDegree.value + degree) % 360;
+    const temp = (shiftDegree.value + point.degree) % 360;
     return temp > 0 ? temp : 360 + temp;
   });
 
@@ -41,8 +35,8 @@ export const ClockPoint = ({
   const circleStyle = useAnimatedStyle(() => {
     const scale = interpolate(
       sumDegree.value,
-      [0, 100, 260, 360],
-      [1, 0.4, 0.4, 1],
+      [0, 90, 180, 270, 360],
+      [1, 0.4, 0.4, 0.4, 1],
       Extrapolation.CLAMP,
     );
 
@@ -51,12 +45,30 @@ export const ClockPoint = ({
     };
   });
 
+  const contentStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(
+      sumDegree.value,
+      [0, 90, 100, 180, 260, 270, 360],
+      [1, 0.2, 0, 0, 0, 0.2, 1],
+      Extrapolation.CLAMP,
+    );
+
+    return {
+      opacity,
+    };
+  });
+
   return (
     <Container style={containerStyle}>
-      <TouchableOpacity onPress={onPress} style={{ flexDirection: "row", alignItems: "center" }}>
-        <Circle style={[{ backgroundColor: circleColor }, circleStyle]} />
-        <CommonText>{text}</CommonText>
-      </TouchableOpacity>
+      <Animated.View style={contentStyle}>
+        <TouchableOpacity
+          onPress={point.onPress}
+          style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}
+        >
+          <Circle style={[{ backgroundColor: circleColor }, circleStyle]} />
+          <CommonText>{point.title}</CommonText>
+        </TouchableOpacity>
+      </Animated.View>
     </Container>
   );
 };

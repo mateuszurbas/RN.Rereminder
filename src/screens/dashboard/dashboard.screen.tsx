@@ -5,7 +5,7 @@ import { Clock, Point } from "@components/clock";
 import { RootTabScreenProps } from "@navigation";
 import { mockedPoints } from "./dashboard.mock";
 
-const radius = 100;
+const radius = 200;
 
 export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) => {
   const points: Point[] = useMemo(
@@ -28,7 +28,7 @@ export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) 
 
   return (
     <GestureDetector gesture={dragGesture}>
-      <Animated.View style={{ flex: 1, justifyContent: "center", marginLeft: radius }}>
+      <Animated.View style={{ flex: 1, justifyContent: "center", marginLeft: -radius }}>
         <Clock shiftDegree={shiftDegree} points={points} radius={radius} />
       </Animated.View>
     </GestureDetector>

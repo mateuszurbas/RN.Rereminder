@@ -1,8 +1,7 @@
 import { SharedValue } from "react-native-reanimated";
-import { Point } from "@components/clock/clock.types";
 
-export type ClockPointProps = {
-  point: Point;
+export type ClockTickProps = {
+  degree: number;
   shiftDegree: SharedValue<number>;
   clockRadius: number;
 };
