@@ -12,10 +12,9 @@ export const CircleElement = ({
   children,
 }: ClockPointProps) => {
   const sumDegree = useDerivedValue(() => calcSumDegree([degree, shiftDegree.value]));
-
   const containerStyle = useAnimatedStyle(() =>
     getContainerAnimatedStyle(sumDegree, radius, rotation),
   );
 
-  return <Container style={[containerStyle]}>{children}</Container>;
+  return <Container style={containerStyle}>{children}</Container>;
 };
