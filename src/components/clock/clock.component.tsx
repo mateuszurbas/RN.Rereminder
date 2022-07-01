@@ -1,6 +1,6 @@
 import React from "react";
-import { ClockPoint } from "@components/clock-point";
 import { ClockProps } from "./clock.types";
+import { ClockPoint } from "./components/clock-point/circle-point.component";
 import { ClockTickTime } from "./components/clock-tick-time/clock-tick-time.component";
 import { ClockTick } from "./components/clock-tick/clock-tick.component";
 

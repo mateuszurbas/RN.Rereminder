@@ -1,32 +1,21 @@
 import React from "react";
-import { useAnimatedStyle, useDerivedValue } from "react-native-reanimated";
-import { Container } from "./circle-element.styles";
+import { useAnimatedStyle, useDerivedValue, useSharedValue } from "react-native-reanimated";
+import { getSumDegree } from "@components/clock/components/clock.utils";
+import { Container, getContainerAnimatedStyle } from "./circle-element.styles";
 import { ClockPointProps } from "./circle-element.types";
 
 export const CircleElement = ({
   degree,
-  shiftDegree,
+  shiftDegree = useSharedValue(0),
   radius,
   rotation = false,
   children,
 }: ClockPointProps) => {
-  const sumDegree = useDerivedValue(() => {
-    const temp = (shiftDegree.value + degree) % 360;
-    return temp > 0 ? temp : 360 + temp;
-  });
+  const sumDegree = useDerivedValue(() => getSumDegree([degree, shiftDegree.value]));
 
-  const containerStyle = useAnimatedStyle(() => {
-    const radian = (sumDegree.value * Math.PI) / 180;
-    const r = radius;
-    const translateX = r * Math.cos(radian) + radius;
-    const translateY = r * Math.sin(radian);
-    const rotate = `${sumDegree.value}deg`;
+  const containerStyle = useAnimatedStyle(() =>
+    getContainerAnimatedStyle(sumDegree, radius, rotation),
+  );
 
-    return {
-      position: "absolute",
-      transform: [{ translateX }, { translateY }, { rotate: rotation ? rotate : "0deg" }],
-    };
-  });
-
-  return <Container style={containerStyle}>{children}</Container>;
+  return <Container style={[containerStyle]}>{children}</Container>;
 };
