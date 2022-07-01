@@ -14,7 +14,7 @@ export const getContainerAnimatedStyle = (
   "worklet";
   const radian = (sumDegree.value * Math.PI) / 180;
   const r = radius;
-  const translateX = r * Math.cos(radian) + radius;
+  const translateX = r * Math.cos(radian);
   const translateY = r * Math.sin(radian);
   const rotate = `${sumDegree.value}deg`;
 

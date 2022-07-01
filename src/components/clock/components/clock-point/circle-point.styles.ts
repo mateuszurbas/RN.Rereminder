@@ -18,9 +18,9 @@ export const Content = styled(TouchableOpacity)`
 
 export const Point = styled(Animated.View)<PointStyled>`
   margin-right: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
   background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 

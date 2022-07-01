@@ -1,6 +1,6 @@
 import React from "react";
 import { useAnimatedStyle, useDerivedValue, useSharedValue } from "react-native-reanimated";
-import { getSumDegree } from "@components/clock/components/clock.utils";
+import { getSumDegree } from "@components/clock/clock.utils";
 import { Container, getContainerAnimatedStyle } from "./circle-element.styles";
 import { ClockPointProps } from "./circle-element.types";
 

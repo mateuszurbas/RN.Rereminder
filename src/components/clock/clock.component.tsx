@@ -1,18 +1,9 @@
 import React from "react";
 import { ClockProps } from "./clock.types";
+import { generateTickTimeValues, generateTickValues } from "./clock.utils";
 import { ClockPoint } from "./components/clock-point/circle-point.component";
 import { ClockTickTime } from "./components/clock-tick-time/clock-tick-time.component";
 import { ClockTick } from "./components/clock-tick/clock-tick.component";
-
-const generateTickValues = () =>
-  Array(96 + 1)
-    .fill(null)
-    .map((_, idx) => idx * 3.75);
-
-const generateTickTimeValues = () =>
-  Array(11 + 1)
-    .fill(null)
-    .map((_, idx) => idx * 30);
 
 export const Clock = ({ shiftDegree, points, radius }: ClockProps) => {
   const ticks = generateTickValues();
@@ -41,8 +32,8 @@ export const Clock = ({ shiftDegree, points, radius }: ClockProps) => {
       {points.map((point) => (
         <ClockPoint
           key={point.title}
-          clockRadius={radius}
           point={point}
+          clockRadius={radius}
           shiftDegree={shiftDegree}
         />
       ))}

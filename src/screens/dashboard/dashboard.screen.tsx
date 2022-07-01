@@ -28,7 +28,9 @@ export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) 
 
   return (
     <GestureDetector gesture={dragGesture}>
-      <Animated.View style={{ flex: 1, justifyContent: "center", marginLeft: -radius }}>
+      <Animated.View
+        style={{ flex: 1, justifyContent: "center", alignItems: "center", marginLeft: -2 * radius }}
+      >
         <Clock shiftDegree={shiftDegree} points={points} radius={radius} />
       </Animated.View>
     </GestureDetector>
