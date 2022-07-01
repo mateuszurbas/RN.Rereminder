@@ -1,4 +1,7 @@
 import React from "react";
+import { CircleElement } from "@components/circle-element";
+import { StarsSvgIcon } from "@components/common-icon";
+import { SunSvgIcon } from "@components/common-icon/svg/sun.icon";
 import { ClockProps } from "./clock.types";
 import { generateTickTimeValues, generateTickValues } from "./clock.utils";
 import { ClockPoint } from "./components/clock-point/circle-point.component";
@@ -37,6 +40,14 @@ export const Clock = ({ shiftDegree, points, radius }: ClockProps) => {
           shiftDegree={shiftDegree}
         />
       ))}
+
+      <CircleElement degree={180} shiftDegree={shiftDegree} radius={radius - 70}>
+        <SunSvgIcon fill={"orange"} width={40} />
+      </CircleElement>
+
+      <CircleElement degree={0} shiftDegree={shiftDegree} radius={radius - 70}>
+        <StarsSvgIcon width={40} />
+      </CircleElement>
     </>
   );
 };
