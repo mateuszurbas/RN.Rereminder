@@ -1,16 +1,15 @@
 import React from "react";
-import { View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import Animated, { useAnimatedStyle, useDerivedValue } from "react-native-reanimated";
 import { CircleElement } from "@components/circle-element";
 import { CommonText } from "@components/common-text";
 import { useThemeColor } from "@hooks";
-import { getSumDegree } from "../../clock.utils";
+import { formatDate, getSumDegree } from "../../clock.utils";
 import {
   getCircleAnimatedStyle,
   getContentAnimatedStyle,
   Point,
   Content,
+  Details,
 } from "./circle-point.styles";
 import { ClockPointProps } from "./circle-point.types";
 
@@ -27,9 +26,10 @@ export const ClockPoint = ({ point, shiftDegree, clockRadius }: ClockPointProps)
       <Animated.View style={contentAnimatedStyle}>
         <Content onPress={point.onPress}>
           <Point backgroundColor={pointBackgroundColor} style={circleAnimatedStyle} />
-          <View style={{ position: "absolute", left: 30 }}>
+          <Details>
+            <CommonText>{formatDate(point.time)}</CommonText>
             <CommonText>{point.title}</CommonText>
-          </View>
+          </Details>
         </Content>
       </Animated.View>
     </CircleElement>

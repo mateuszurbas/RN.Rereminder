@@ -24,6 +24,12 @@ export const Point = styled(Animated.View)<PointStyled>`
   background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
+export const Details = styled.View`
+  position: absolute;
+  left: 30px;
+  width: 200px;
+`;
+
 export const getCircleAnimatedStyle = (sumDegree: SharedValue<number>): ViewStyle => {
   "worklet";
   const scale = interpolate(
