@@ -5,12 +5,13 @@ import { SunSvgIcon } from "@components/common-icon/svg/sun.icon";
 import { ClockProps } from "./clock.types";
 import { generateTickTimeValues, generateTickValues } from "./clock.utils";
 import { ClockPoint } from "./components/clock-point/circle-point.component";
-import { ClockTickTime } from "./components/clock-tick-time/clock-tick-time.component";
 import { ClockTick } from "./components/clock-tick/clock-tick.component";
+import { ClockTime } from "./components/clock-time/clock-time.component";
 
 export const Clock = ({ shiftDegree, points, radius }: ClockProps) => {
   const ticks = generateTickValues();
   const tickTime = generateTickTimeValues();
+  const iconRadius = radius - 70;
 
   return (
     <>
@@ -24,7 +25,7 @@ export const Clock = ({ shiftDegree, points, radius }: ClockProps) => {
       ))}
 
       {tickTime.map((tick) => (
-        <ClockTickTime
+        <ClockTime
           key={`tick-time-${tick}`}
           degree={tick}
           clockRadius={radius}
@@ -41,11 +42,11 @@ export const Clock = ({ shiftDegree, points, radius }: ClockProps) => {
         />
       ))}
 
-      <CircleElement degree={180} shiftDegree={shiftDegree} radius={radius - 70}>
-        <SunSvgIcon fill={"orange"} width={40} />
+      <CircleElement degree={180} shiftDegree={shiftDegree} radius={iconRadius}>
+        <SunSvgIcon width={40} />
       </CircleElement>
 
-      <CircleElement degree={0} shiftDegree={shiftDegree} radius={radius - 70}>
+      <CircleElement degree={0} shiftDegree={shiftDegree} radius={iconRadius}>
         <StarsSvgIcon width={40} />
       </CircleElement>
     </>

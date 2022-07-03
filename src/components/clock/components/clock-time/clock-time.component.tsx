@@ -1,9 +1,9 @@
 import React from "react";
 import { CircleElement } from "@components/circle-element";
 import { CommonText } from "@components/common-text";
-import { ClockTickTimeProps } from "./clock-tick-time.types";
+import { ClockTimeProps } from "./clock-time.types";
 
-export const ClockTickTime = ({ degree, shiftDegree, clockRadius }: ClockTickTimeProps) => {
+export const ClockTime = ({ degree, shiftDegree, clockRadius }: ClockTimeProps) => {
   const isBold = degree % 90 === 0;
   const tickTimeRadius = clockRadius - 30;
   const timeText = (degree / 30) * 2;
