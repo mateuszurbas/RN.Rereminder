@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as Notifications from "expo-notifications";
-import { registerForPushNotificationsAsync } from "../services/notifications";
+import { registerForPushNotificationsAsync } from "./notifications.utils";
 
 export const useNotification = () => {
   const [expoPushToken, setExpoPushToken] = useState("");
@@ -17,6 +17,7 @@ export const useNotification = () => {
 
     responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
       console.log(response);
+      console.log(expoPushToken, notification);
     });
 
     return () => {

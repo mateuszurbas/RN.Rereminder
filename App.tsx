@@ -1,7 +1,8 @@
 import React from "react";
 import { CoreApp } from "@core";
+import { useNotification } from "@services/notifications";
 import * as Notifications from "expo-notifications";
-import { useCachedResources, useNotification } from "@hooks";
+import { useCachedResources } from "@hooks";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
