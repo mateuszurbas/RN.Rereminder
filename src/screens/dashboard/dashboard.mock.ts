@@ -1,10 +1,14 @@
-const generatePoint = (degree: number, index: number) => ({
-  degree,
-  title: `Zadanie nr ${index}`,
-  description: `To zadanie jest przy ${degree} stopniach na kole`,
-  time: new Date(),
-});
+const generatePoint = (index: number) => {
+  const time = new Date();
+  time.setHours(index * 3);
 
-export const mockedPoints = [0, 10, 40, 90, 150, 220, 300, 330].map((degree, index) =>
-  generatePoint(degree, index),
-);
+  return {
+    title: `Zadanie nr ${index}`,
+    description: `To zadanie jest eleganckie`,
+    time,
+  };
+};
+
+export const mockedPoints = Array(8)
+  .fill(null)
+  .map((_, index) => generatePoint(index));

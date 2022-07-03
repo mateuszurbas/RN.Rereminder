@@ -6,7 +6,15 @@ export const calcSumDegree = (numbers: Array<number>): number => {
   return sum > 0 ? sum : 360 + sum;
 };
 
-export const formatDateToTime = (date: Date): string => dayjs.default(date).format("hh:mm");
+export const calcTimeToDegree = (date: Date): number => {
+  const hourMinutes = 60;
+  const dayjsDate = dayjs.default(date);
+  const minutes = dayjsDate.get("hour") * hourMinutes + dayjsDate.get("minute");
+  const degree = minutes / 4;
+  return degree;
+};
+
+export const formatDateToTime = (date: Date): string => dayjs.default(date).format("HH:mm");
 
 export const generateTickValues = () =>
   Array(96)

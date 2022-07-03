@@ -8,6 +8,7 @@ export const ClockTick = ({ degree, shiftDegree, clockRadius }: ClockTickProps) 
   const isHour = degree % 15 === 0;
   const tickCircleRadius = clockRadius - 5;
   const containerStyle = useAnimatedStyle(() => getContainerAnimatedStyle(shiftDegree));
+
   return (
     <Container style={containerStyle}>
       <CircleElement degree={degree} radius={tickCircleRadius} rotation={true}>

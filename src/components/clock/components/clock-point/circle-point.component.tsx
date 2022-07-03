@@ -3,7 +3,7 @@ import Animated, { useAnimatedStyle, useDerivedValue } from "react-native-reanim
 import { CircleElement } from "@components/circle-element";
 import { CommonText } from "@components/common-text";
 import { useThemeColor } from "@hooks";
-import { formatDateToTime, calcSumDegree } from "../../clock.utils";
+import { formatDateToTime, calcSumDegree, calcTimeToDegree } from "../../clock.utils";
 import {
   getCircleAnimatedStyle,
   getContentAnimatedStyle,
@@ -17,12 +17,13 @@ export const ClockPoint = ({ point, shiftDegree, clockRadius }: ClockPointProps)
   const radius = clockRadius + 30;
   const pointBackgroundColor = useThemeColor("tint");
 
-  const sumDegree = useDerivedValue(() => calcSumDegree([shiftDegree.value, point.degree]));
+  const degree = calcTimeToDegree(point.time);
+  const sumDegree = useDerivedValue(() => calcSumDegree([shiftDegree.value, degree]));
   const circleAnimatedStyle = useAnimatedStyle(() => getCircleAnimatedStyle(sumDegree));
   const contentAnimatedStyle = useAnimatedStyle(() => getContentAnimatedStyle(sumDegree));
 
   return (
-    <CircleElement degree={point.degree} shiftDegree={shiftDegree} radius={radius}>
+    <CircleElement degree={degree} shiftDegree={shiftDegree} radius={radius}>
       <Animated.View style={contentAnimatedStyle}>
         <Content onPress={point.onPress}>
           <Point backgroundColor={pointBackgroundColor} style={circleAnimatedStyle} />
