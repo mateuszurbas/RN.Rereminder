@@ -1,11 +1,12 @@
 import React, { useMemo } from "react";
+import { Dimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import Animated, { useSharedValue } from "react-native-reanimated";
+import { useSharedValue } from "react-native-reanimated";
 import { Clock, Point } from "@components/clock";
 import { RootTabScreenProps } from "@navigation";
 import { mockedPoints } from "./dashboard.mock";
 
-const radius = 150;
+const screenWidth = Dimensions.get("screen").width;
 
 export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) => {
   const points: Point[] = useMemo(
@@ -28,16 +29,12 @@ export const DashboardScreen = ({ navigation }: RootTabScreenProps<"Dasboard">) 
 
   return (
     <GestureDetector gesture={dragGesture}>
-      <Animated.View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          marginLeft: -2.5 * radius,
-        }}
-      >
-        <Clock shiftDegree={shiftDegree} points={points} radius={radius} />
-      </Animated.View>
+      <Clock
+        shiftDegree={shiftDegree}
+        points={points}
+        radius={150}
+        style={{ marginLeft: -screenWidth }}
+      />
     </GestureDetector>
   );
 };
