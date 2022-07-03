@@ -14,6 +14,8 @@ export const calcTimeToDegree = (date: Date): number => {
   return degree;
 };
 
+export const checkDegreeIfFullHour = (degree: number) => degree % 15 === 0;
+
 export const formatDateToTime = (date: Date): string => dayjs.default(date).format("HH:mm");
 
 export const generateTickValues = () =>
