@@ -19,7 +19,7 @@ export const useCalendar = () => {
       startDate,
       endDate,
       title,
-      alarms: [{ relativeOffset: -15 }],
+      alarms: [{ relativeOffset: -15, method: Calendar.AlarmMethod.ALARM }],
     })
       .then((event) => {
         console.log("success", event);
