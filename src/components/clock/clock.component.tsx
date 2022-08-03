@@ -11,6 +11,7 @@ import { ClockTime } from "./components/clock-time/clock-time.component";
 
 export const Clock = ({ shiftDegree, points, radius, style }: ClockProps) => {
   const iconRadius = radius - 70;
+  const height = 2 * radius + 100;
 
   const ticks = useMemo(
     () =>
@@ -43,7 +44,7 @@ export const Clock = ({ shiftDegree, points, radius, style }: ClockProps) => {
   ));
 
   return (
-    <Container style={style}>
+    <Container style={[style, { height }]}>
       {ticks}
       {times}
       {allPoints}
