@@ -7,7 +7,6 @@ export const Content = styled.View``;
 
 export const Header = styled.SafeAreaView`
   margin: 100px 20px 0;
-  background-color: "red";
 `;
 
 export const WelcomeMessage = styled(CommonText)`
@@ -15,7 +14,7 @@ export const WelcomeMessage = styled(CommonText)`
 `;
 
 export const DatePickerContainer = styled.View`
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 10px 0;
 `;
 

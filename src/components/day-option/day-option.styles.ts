@@ -37,7 +37,7 @@ export const ActiveCircle = styled(Animated.View)`
   width: 4px;
   height: 4px;
   border-radius: 2px;
-  background-color: blue;
+  background-color: #2f95dc;
   margin-top: 10px;
   position: absolute;
   bottom: 0;

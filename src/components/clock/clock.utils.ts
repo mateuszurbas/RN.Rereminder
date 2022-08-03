@@ -18,11 +18,6 @@ export const checkDegreeIfFullHour = (degree: number) => degree % 15 === 0;
 
 export const formatDateToTime = (date: Date): string => dayjs.default(date).format("HH:mm");
 
-export const generateTickValues = () =>
-  Array(96)
-    .fill(null)
-    .map((_, idx) => idx * 3.75);
-
 export const generateTickTimeValues = () =>
   Array(12)
     .fill(null)
