@@ -11,6 +11,9 @@ import { ClockTime } from "./components/clock-time/clock-time.component";
 
 export const Clock = ({ shiftDegree, points, radius, style }: ClockProps) => {
   const iconRadius = radius - 70;
+  const pastProgressRadius = radius - 10;
+  const activeProgressRadius = radius;
+  const futureProgressRadius = radius + 10;
   const height = 2 * radius + 100;
 
   const times = useMemo(
@@ -37,10 +40,10 @@ export const Clock = ({ shiftDegree, points, radius, style }: ClockProps) => {
 
       <View
         style={{
-          width: 320,
-          height: 320,
-          borderRadius: 160,
-          borderColor: "#2f95dc",
+          width: pastProgressRadius * 2,
+          height: pastProgressRadius * 2,
+          borderRadius: pastProgressRadius,
+          borderColor: "#F93943",
           borderWidth: 5,
           position: "absolute",
         }}
@@ -48,9 +51,9 @@ export const Clock = ({ shiftDegree, points, radius, style }: ClockProps) => {
 
       <View
         style={{
-          width: 300,
-          height: 300,
-          borderRadius: 150,
+          width: activeProgressRadius * 2,
+          height: activeProgressRadius * 2,
+          borderRadius: activeProgressRadius,
           borderColor: "#FAC739",
           borderWidth: 5,
           position: "absolute",
@@ -59,10 +62,10 @@ export const Clock = ({ shiftDegree, points, radius, style }: ClockProps) => {
 
       <View
         style={{
-          width: 280,
-          height: 280,
-          borderRadius: 140,
-          borderColor: "#F93943",
+          width: futureProgressRadius * 2,
+          height: futureProgressRadius * 2,
+          borderRadius: futureProgressRadius,
+          borderColor: "#2f95dc",
           borderWidth: 5,
           position: "absolute",
         }}
