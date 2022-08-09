@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
 import { CircleElement } from "@components/circle-element";
 import { StarsSvgIcon } from "@components/common-icon";
 import { SunSvgIcon } from "@components/common-icon/svg/sun.icon";
+import { ProgressCircle } from "@components/progress-circle";
 import { Container } from "./clock.styles";
 import { ClockProps } from "./clock.types";
 import { generateTickTimeValues as generateTimeValues } from "./clock.utils";
@@ -38,37 +38,26 @@ export const Clock = ({ shiftDegree, points, radius, style }: ClockProps) => {
       {times}
       {allPoints}
 
-      <View
-        style={{
-          width: pastProgressRadius * 2,
-          height: pastProgressRadius * 2,
-          borderRadius: pastProgressRadius,
-          borderColor: "#F93943",
-          borderWidth: 5,
-          position: "absolute",
-        }}
+      <ProgressCircle
+        size={pastProgressRadius * 2}
+        strokeWidth={5}
+        progress={45}
+        pgColor={"#F93943"}
+        bgColor={"lightgray"}
       />
 
-      <View
-        style={{
-          width: activeProgressRadius * 2,
-          height: activeProgressRadius * 2,
-          borderRadius: activeProgressRadius,
-          borderColor: "#FAC739",
-          borderWidth: 5,
-          position: "absolute",
-        }}
+      <ProgressCircle
+        size={activeProgressRadius * 2}
+        strokeWidth={5}
+        progress={30}
+        pgColor={"#FAC739"}
       />
 
-      <View
-        style={{
-          width: futureProgressRadius * 2,
-          height: futureProgressRadius * 2,
-          borderRadius: futureProgressRadius,
-          borderColor: "#2f95dc",
-          borderWidth: 5,
-          position: "absolute",
-        }}
+      <ProgressCircle
+        size={futureProgressRadius * 2}
+        strokeWidth={5}
+        progress={20}
+        pgColor={"#2f95dc"}
       />
 
       <CircleElement degree={180} shiftDegree={shiftDegree} radius={iconRadius}>
