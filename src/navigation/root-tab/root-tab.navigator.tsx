@@ -7,10 +7,6 @@ import { DashboardScreen } from "@screens/dashboard";
 import { OptionsScreen } from "@screens/options";
 import { RootTabParamList } from "./root-tab.types";
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
 const RootTab = createBottomTabNavigator<RootTabParamList>();
 
 export const BottomTabNavigator = () => {
